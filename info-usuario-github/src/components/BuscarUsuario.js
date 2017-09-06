@@ -1,32 +1,45 @@
 import React, { Component } from 'react';
+import GithubUsuario from '../services/GithubUsuario';
 
-class BuscarUsuario extends Component {
-    submit(e) {
+var BuscarUsuario = React.createClass({
+    handleSubmit: function(e) {
         e.preventDefault();
-         console.log(this.refs.username.value);
-     }
-     
-    render() {
+        GithubUsuario.getByUsername(this.refs.username.value).then(function(response){
+            this.props.updateUser(response.data);
+        }.bind(this));
+        GithubUsuario.getReposByUsername(this.refs.username.value).then(function(response){
+            this.props.updateRepos(response.data);
+        }.bind(this));
+    },
+    render: function () {
         return (
             <div className="jumbotron">
-            <h1>Github Info</h1>
-            <div className="row">
-                <form onSubmit={this.submit.bind(this)}>
-                    <div className="form-group">
-                        <label>Nome de usuário</label>
-                        <input
-                            type="text"
-                            ref="username"
-                            className="form-control"
-                            placeholder="Ex: andrefelizardo"
-                        />
-                    </div>
-                    <button type="submit" className="btn btn-primary">Buscar</button>
-                </form>
+                <h1>Github Info</h1>
+                <div className="row">
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="form-group">
+                            <label>Nome de usuário</label>
+                            <input
+                                type="text"
+                                ref="username"
+                                className="form-control"
+                                placeholder="Ex: andrefelizardo"
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            className="btn btn-primary">Buscar
+                    </button>
+                    </form>
+                </div>
             </div>
-        </div>
         );
     }
-}
+});
+
+BuscarUsuario.propTypes = {
+    updateUser: React.PropTypes.func.isRequired,
+    updateRepos: React.PropTypes.func.isRequired,
+};
 
 export default BuscarUsuario;
