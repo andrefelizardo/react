@@ -22,7 +22,7 @@ body {
 #loader {
   width: 100vw;
   height: 100vh;
-  background: rgba(5, 148, 255, 0.9);
+  background: rgba(5, 148, 255, 0.95);
   position: absolute;
   top: 0;
   display: none;

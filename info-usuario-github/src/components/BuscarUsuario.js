@@ -7,8 +7,11 @@ var BuscarUsuario = React.createClass({
         document.getElementById('loader').style.display = "flex";
         GithubUsuario.getByUsername(this.refs.username.value).then(function(response){
             this.props.updateUser(response.data);
-            // document.getElementById('loader').style('display', 'none');
-        }.bind(this));
+        }.bind(this))
+        .catch(function(error) {
+            alert('Usuário não encontrado');
+            location.reload();
+        });
         GithubUsuario.getReposByUsername(this.refs.username.value).then(function(response){
             this.props.updateRepos(response.data);
             document.getElementById('loader').style.display = "none";
