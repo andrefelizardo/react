@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import UserRepos from './UserRepos';
 
-function UserInfo(props) {
-    var userInfo = props.user ?
+const UserInfo = ({user, repos}) => {
+    var userInfo = user ?
         (
             <div className="row">
                 <div className="col-lg-4">
-                    <img className="img-thumbnail" src={props.user.avatar_url} alt="avatar" width="140" height="140" />
-                    <h2>{props.user.login}</h2>
-                    <p>{props.user.name}</p>
-                    <p>Seguidores: {props.user.followers} / Seguindo: {props.user.following}</p>
-                    <p><a className="btn btn-dark" href={props.user.html_url} role="button">Ver Detalhes</a></p>
+                    <img className="img-thumbnail" src={user.avatar_url} alt="avatar" width="140" height="140" />
+                    <h2>{user.login}</h2>
+                    <p>{user.name}</p>
+                    <p>Seguidores: {user.followers} / Seguindo: {user.following}</p>
+                    <p><a className="btn btn-dark" href={user.html_url} role="button">Ver Detalhes</a></p>
                 </div>
                 <div className="col-lg-8">
-                    <UserRepos repos={props.repos} />
+                    <UserRepos repos={repos} />
                 </div>
             </div>
         ) : null;

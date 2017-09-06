@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 
-var UserRepos = React.createClass({
-    getInitialState: function () {
-        return {
+class UserRepos extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
             reposCount: 0
         }
-    },
-    componentWillReceiveProps: function (props) {
+    }
+
+    componentWillReceiveProps(props) {
         this.setState({ reposCount: props.repos.length });
-    },
-    render: function () {
-        var repos = this.props.repos.map(function (repo, key) {
+    }
+
+    render() {
+        const {repos} = this.props;
+        const reposLista = this.props.repos.map(function (repo, key) {
             return (
                 <div className="col-sm-6">
                     <div key={key} className="card">
@@ -34,11 +38,11 @@ var UserRepos = React.createClass({
             <div>
                 <h2>{this.state.reposCount} repositórios</h2>
                 <div className="row">
-                    {repos}
+                    {reposLista}
                 </div>
             </div>
         );
     }
-});
+}
 
 export default UserRepos;

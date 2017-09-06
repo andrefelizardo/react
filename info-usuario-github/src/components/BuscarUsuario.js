@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
 import GithubUsuario from '../services/GithubUsuario';
 
-var BuscarUsuario = React.createClass({
-    handleSubmit: function(e) {
+class BuscarUsuario extends Component{
+    constructor(props) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    
+    handleSubmit(e) {
         e.preventDefault();
         document.getElementById('loader').style.display = "flex";
-        GithubUsuario.getByUsername(this.refs.username.value).then(function(response){
+        GithubUsuario.getByUsername(this.refs.username.value).then((response) => {
             this.props.updateUser(response.data);
-        }.bind(this))
+        })
         .catch(function(error) {
             alert('Usuário não encontrado');
             location.reload();
         });
-        GithubUsuario.getReposByUsername(this.refs.username.value).then(function(response){
+        GithubUsuario.getReposByUsername(this.refs.username.value).then((response) => {
             this.props.updateRepos(response.data);
             document.getElementById('loader').style.display = "none";
-        }.bind(this));
-    },
-    render: function () {
+        });
+    }
+
+    render() {
         return (
             <div className="jumbotron">
                 <h1>Github Info</h1>
@@ -41,7 +47,7 @@ var BuscarUsuario = React.createClass({
             </div>
         );
     }
-});
+}
 
 BuscarUsuario.propTypes = {
     updateUser: React.PropTypes.func.isRequired,

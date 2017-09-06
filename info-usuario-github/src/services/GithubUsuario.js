@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 import axios from 'axios';
 
-var GithubUsuario = {
-    getByUsername: function (username) {
-        return axios.get('https://api.github.com/users/' + username);
+const GithubUsuario = {
+    getByUsername(username) {
+        return axios.get(`https://api.github.com/users/${username}`);
     },
 
-    getReposByUsername: function (username) {
-        return axios.get('https://api.github.com/users/' + username + '/repos');
+    getReposByUsername(username) {
+        return axios.get(`https://api.github.com/users/${username}/repos`);
     }
   };
   
-module.exports = GithubUsuario;
+export default GithubUsuario;
