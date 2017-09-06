@@ -4,11 +4,14 @@ import GithubUsuario from '../services/GithubUsuario';
 var BuscarUsuario = React.createClass({
     handleSubmit: function(e) {
         e.preventDefault();
+        document.getElementById('loader').style.display = "flex";
         GithubUsuario.getByUsername(this.refs.username.value).then(function(response){
             this.props.updateUser(response.data);
+            // document.getElementById('loader').style('display', 'none');
         }.bind(this));
         GithubUsuario.getReposByUsername(this.refs.username.value).then(function(response){
             this.props.updateRepos(response.data);
+            document.getElementById('loader').style.display = "none";
         }.bind(this));
     },
     render: function () {

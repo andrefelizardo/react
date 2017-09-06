@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import UserRepos from './UserRepos';
 
 function UserInfo(props) {
     var userInfo = props.user ?
@@ -10,6 +11,9 @@ function UserInfo(props) {
                     <p>{props.user.name}</p>
                     <p>Seguidores: {props.user.followers} / Seguindo: {props.user.following}</p>
                     <p><a className="btn btn-dark" href={props.user.html_url} role="button">Ver Detalhes</a></p>
+                </div>
+                <div className="col-lg-8">
+                    <UserRepos repos={props.repos} />
                 </div>
             </div>
         ) : null;
