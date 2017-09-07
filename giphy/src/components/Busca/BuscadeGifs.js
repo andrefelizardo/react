@@ -37,4 +37,8 @@ class BuscaDeGifs extends Component {
     }
 }
 
+BuscaDeGifs.proptypes = {
+    buscarTermos: React.PropTypes.func.isRequired
+}
+
 export default BuscaDeGifs;
