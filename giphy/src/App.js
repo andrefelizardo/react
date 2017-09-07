@@ -9,12 +9,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gifs: [],
-      listaGifs: []
+      gifs: []
     }
 
     this.carregarGifs = this.carregarGifs.bind(this);
-    this.setarGifs = this.setarGifs.bind(this);
   }
 
   carregarGifs(gifs) {
@@ -22,18 +20,13 @@ class App extends Component {
     console.log('carregar gifs ' + gifs);
   }
 
-  setarGifs(listaGifs) {
-    this.setState({listaGifs: listaGifs});
-    console.log('setando gifs ' + listaGifs);
-  }
-
   render() {
     return (
       <div>
         <Nav />
         <Introducao />
-        <BuscadeGifs carregarGifs={this.carregarGifs} />
-        <ListaGifs setarGifs={this.setarGifs} />
+        <BuscadeGifs carregarGifs={this.carregarGifs}  />
+        <ListaGifs gifs={this.state.gifs} />
       </div>
     );
   }

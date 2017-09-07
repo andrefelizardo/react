@@ -13,7 +13,7 @@ class BuscaDeGifs extends Component {
         console.log(this.refs.stringBusca.value);
         ServiceBuscaGiphy.buscarTermos(this.refs.stringBusca.value).then((response) => {
             this.props.carregarGifs(response.data.data);
-            console.log(response.data.data);
+            this.props.setarGifs(response.data.data);
         })
         .catch((error) => {
             console.log(error);
