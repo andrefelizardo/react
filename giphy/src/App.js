@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './libs/bootstrap.min.css'
+import './libs/bootstrap.min.css';
+import BuscadeGifs from './components/Busca/BuscadeGifs';
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
             <a className="btn btn-primary btn-lg" href="https://developers.giphy.com/docs/#getting-started" role="button">Documentação API</a>
           </p>
         </div>
+        <BuscadeGifs />
       </div>
     );
   }
