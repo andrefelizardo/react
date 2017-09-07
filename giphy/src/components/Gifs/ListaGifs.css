@@ -1,0 +1,14 @@
+.container-gifs {
+    margin: 25px auto 100px;
+}
+.container-gifs .row {
+    justify-content: space-between;
+}
+.container-gifs .card {
+    padding: 1em;
+    margin-bottom: 1em;
+    width: 30%;
+}
+.container-gifs .card img {
+    margin-bottom: 1em;
+}
