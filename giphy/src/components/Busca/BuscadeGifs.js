@@ -10,10 +10,12 @@ class BuscaDeGifs extends Component {
 
     acaoSubmit(e) {
         e.preventDefault();
-        console.log(this.refs.stringBusca.value);
+        this.props.carregarGifs();
+        window.scrollTo(0, 0);
+        document.querySelector('#loader').style.display = "flex";
         ServiceBuscaGiphy.buscarTermos(this.refs.stringBusca.value).then((response) => {
             this.props.carregarGifs(response.data.data);
-            this.props.setarGifs(response.data.data);
+            document.querySelector('#loader').style.display = "none";
         })
         .catch((error) => {
             console.log(error);

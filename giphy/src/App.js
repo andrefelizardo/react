@@ -4,6 +4,7 @@ import BuscadeGifs from './components/Busca/BuscadeGifs';
 import Nav from './components/Nav';
 import Introducao from './components/Introducao';
 import ListaGifs from './components/Gifs/ListaGifs';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -11,13 +12,11 @@ class App extends Component {
     this.state = {
       gifs: []
     }
-
     this.carregarGifs = this.carregarGifs.bind(this);
   }
 
   carregarGifs(gifs) {
     this.setState({gifs: gifs});
-    console.log('carregar gifs ' + gifs);
   }
 
   render() {
